@@ -1,23 +1,14 @@
 <%-- 
-    Document   : final
-    Created on : 12 Jun, 2020, 2:50:36 PM
+    Document   : check
+    Created on : 15 Jun, 2020, 1:39:50 PM
     Author     : HARDIK
 --%>
 
-<%@page import="database.getRecord"%>
-<%@page import="domain.Record"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-    <style>
-    body
-    {
-          color: teal;
-    }
-    </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Thank You!</title>
+    <title>Status</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Marimar Hotel template project">
@@ -40,19 +31,44 @@
 	<div class="home">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/contact.jpg" data-speed="0.8"></div>
 		<div class="home_container d-flex flex-column align-items-center justify-content-center">
-			<div class="home_title"><h1>Final</h1></div>
+			<div class="home_title"><h1>Status</h1></div>
 		</div>
 	</div>
-        <center>
-        <h1 style="color:white;background-color:black;font-family:serif;"> Thank  You </h1>
-        <h2  style="color:coral;">stay home stay safe</h2>
-        <h2  style="color:green;">For every room you book we plant a Tree</h2>
-        <h2  style="color:green;">Check your room status by clicking <a href="check.jsp">Status page</a></h2>
-        <h2><a href="logout.jsp" id="link">logout</a></h2>
-        </center>
-    
-        
-     <jsp:include page="/footer.jsp"/>
+
+        <div class="container bg-dark" style="color:white">
+        <div class="row">
+            <div class="col-6">
+                <br><br><br>
+                <div id="check">
+                    Click the button to check your booking status.
+                </div>
+                <br><br><br>
+                <div class="col-6 align-self-center">
+                    <button type="button" onclick="loadDoc()" class="btn btn-warning">Check status</button>
+                </div>
+                <br><br><br>
+            </div>
+        </div>
+            <div class="row">
+                <div id="dataid">
+                </div>
+            </div>
+        </div>
+    <script>
+            
+            function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("dataid").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "newjsp.jsp", true);
+  xhttp.send();
+}
+        </script>
+        <jsp:include page="/footer.jsp"/>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="styles/bootstrap-4.1.2/popper.js"></script>
     <script src="styles/bootstrap-4.1.2/bootstrap.min.js"></script>
@@ -70,8 +86,3 @@
     <script src="js/contact.js"></script>
 </body>    
 </html>
-
-    
-   
-
-
